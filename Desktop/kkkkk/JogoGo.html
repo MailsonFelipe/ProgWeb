@@ -1,0 +1,393 @@
+<!<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Go</title>
+	<link rel="stylesheet" type="text/css" href="EstilosJogoGo.css">
+	<script type="text/javascript">
+
+		var jogada = 'X';
+		var cont = 0;
+		var ultimoJogador;
+		var tabuleiro = new Array(255);
+
+		function clica(posicao, indice)
+		{
+			aux = document.getElementById(posicao).innerHTML;
+			document.getElementById('ultimoJogador').innerHTML = 'Último jogador:  ' + jogada;
+
+			if (aux == 'X' || aux == 'O')
+			{
+				alert("Celula ocupada.");
+			}else{
+				document.getElementById(posicao).innerHTML = jogada;
+				tabuleiro[indice] = jogada;
+
+				if(jogada == 'X')
+				{
+					jogada = 'O';
+				}else{
+					jogada = 'X';
+				}
+			}
+
+			for(var k=0; k<255; k=k+15)
+			{
+				for(var j=k; j<k+12; j++)
+				{
+					if(tabuleiro[j] == 'X' && tabuleiro[j+1] == 'X' && tabuleiro[j+2] == 'X' && tabuleiro[j+3] == 'X' && tabuleiro[j+4] == 'X')
+					{
+						alert("Fim de jogo. Jogador 1 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+
+					if(tabuleiro[j] == 'O' && tabuleiro[j+1] == 'O' && tabuleiro[j+2] == 'O' && tabuleiro[j+3] == 'O' && tabuleiro[j+4] == 'O')
+					{
+						alert("Fim de jogo! Jogador 2 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+				}
+			}
+
+
+			for(var k=0; k<15; k++)
+			{
+				for(var j=k; j<k+165; j=j+15)
+				{
+					if(tabuleiro[j] == 'X' && tabuleiro[j+15] == 'X' && tabuleiro[j+30] == 'X' && tabuleiro[j+45] == 'X' && tabuleiro[j+60] == 'X')
+					{
+						alert("Fim de jogo. Jogador 1 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+
+					if(tabuleiro[j] == 'O' && tabuleiro[j+15] == 'O' && tabuleiro[j+30] == 'O' && tabuleiro[j+45] == 'O' && tabuleiro[j+60] == 'O')
+					{
+						alert("Fim de jogo! Jogador 2 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+				}
+			}
+
+
+			for(var k=0; k<11; k++)
+			{
+				for(var j=k; j<k+165; j=j+15)
+				{
+					if(tabuleiro[j] == 'X' && tabuleiro[j+16] == 'X' && tabuleiro[j+32] == 'X' && tabuleiro[j+48] == 'X' && tabuleiro[j+64] == 'X')
+					{
+						alert("Fim de jogo. Jogador 1 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+
+					if(tabuleiro[j] == 'O' && tabuleiro[j+16] == 'O' && tabuleiro[j+32] == 'O' && tabuleiro[j+48] == 'O' && tabuleiro[j+64] == 'O')
+					{
+						alert("Fim de jogo. Jogador 2 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+				}
+			}
+
+
+			for(var k=14; k>0; k--)
+			{
+				for(var j=k; j<168+k; j=j+14)
+				{
+					if(tabuleiro[j] == 'X' && tabuleiro[j+14] == 'X' && tabuleiro[j+28] == 'X' && tabuleiro[j+42] == 'X' && tabuleiro[j+56] == 'X')
+					{
+						alert("Fim de jogo. Jogador 1 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+
+					if(tabuleiro[j] == 'O' && tabuleiro[j+14] == 'O' && tabuleiro[j+28] == 'O' && tabuleiro[j+42] == 'O' && tabuleiro[j+56] == 'O')
+					{
+						alert("Fim de jogo. Jogador 2 ganhou!");
+						window.location.reload();
+						return 0;
+					}
+				}
+			}
+		}
+
+	</script>
+
+</head>
+<body>
+	<table class="tabela">
+		<tr>
+			<td class="celula" id="c0" onclick="clica(this.id, 0);"></td>
+			<td class="celula" id="c1" onclick="clica(this.id, 1);"></td>
+			<td class="celula" id="c2" onclick="clica(this.id, 2);"></td>
+			<td class="celula" id="c3" onclick="clica(this.id, 3);"></td>
+			<td class="celula" id="c4" onclick="clica(this.id, 4);"></td>
+			<td class="celula" id="c5" onclick="clica(this.id, 5);"></td>
+			<td class="celula" id="c6" onclick="clica(this.id, 6);"></td>
+			<td class="celula" id="c7" onclick="clica(this.id, 7);"></td>
+			<td class="celula" id="c8" onclick="clica(this.id, 8);"></td>
+			<td class="celula" id="c9" onclick="clica(this.id, 9);"></td>
+			<td class="celula" id="c10" onclick="clica(this.id, 10);"></td>
+			<td class="celula" id="c11" onclick="clica(this.id, 11);"></td>
+			<td class="celula" id="c12" onclick="clica(this.id, 12);"></td>
+			<td class="celula" id="c13" onclick="clica(this.id, 13);"></td>
+			<td class="celula" id="c14" onclick="clica(this.id, 14);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c15" onclick="clica(this.id, 15);"></td>
+			<td class="celula" id="c16" onclick="clica(this.id, 16);"></td>
+			<td class="celula" id="c17" onclick="clica(this.id, 17);"></td>
+			<td class="celula" id="c18" onclick="clica(this.id, 18);"></td>
+			<td class="celula" id="c19" onclick="clica(this.id, 19);"></td>
+			<td class="celula" id="c20" onclick="clica(this.id, 20);"></td>
+			<td class="celula" id="c21" onclick="clica(this.id, 21);"></td>
+			<td class="celula" id="c22" onclick="clica(this.id, 22);"></td>
+			<td class="celula" id="c23" onclick="clica(this.id, 23);"></td>
+			<td class="celula" id="c24" onclick="clica(this.id, 24);"></td>
+			<td class="celula" id="c25" onclick="clica(this.id, 25);"></td>
+			<td class="celula" id="c26" onclick="clica(this.id, 26);"></td>
+			<td class="celula" id="c27" onclick="clica(this.id, 27);"></td>
+			<td class="celula" id="c28" onclick="clica(this.id, 28);"></td>
+			<td class="celula" id="c29" onclick="clica(this.id, 29);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c30" onclick="clica(this.id, 30);"></td>
+			<td class="celula" id="c31" onclick="clica(this.id, 31);"></td>
+			<td class="celula" id="c32" onclick="clica(this.id, 32);"></td>
+			<td class="celula" id="c33" onclick="clica(this.id, 33);"></td>
+			<td class="celula" id="c34" onclick="clica(this.id, 34);"></td>
+			<td class="celula" id="c35" onclick="clica(this.id, 35);"></td>
+			<td class="celula" id="c36" onclick="clica(this.id, 36);"></td>
+			<td class="celula" id="c37" onclick="clica(this.id, 37);"></td>
+			<td class="celula" id="c38" onclick="clica(this.id, 38);"></td>
+			<td class="celula" id="c39" onclick="clica(this.id, 39);"></td>
+			<td class="celula" id="c40" onclick="clica(this.id, 40);"></td>
+			<td class="celula" id="c41" onclick="clica(this.id, 41);"></td>
+			<td class="celula" id="c42" onclick="clica(this.id, 42);"></td>
+			<td class="celula" id="c43" onclick="clica(this.id, 43);"></td>
+			<td class="celula" id="c44" onclick="clica(this.id, 44);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c45" onclick="clica(this.id, 45);"></td>
+			<td class="celula" id="c46" onclick="clica(this.id, 46);"></td>
+			<td class="celula" id="c47" onclick="clica(this.id, 47);"></td>
+			<td class="celula" id="c48" onclick="clica(this.id, 48);"></td>
+			<td class="celula" id="c49" onclick="clica(this.id, 49);"></td>
+			<td class="celula" id="c50" onclick="clica(this.id, 50);"></td>
+			<td class="celula" id="c51" onclick="clica(this.id, 51);"></td>
+			<td class="celula" id="c52" onclick="clica(this.id, 52);"></td>
+			<td class="celula" id="c53" onclick="clica(this.id, 53);"></td>
+			<td class="celula" id="c54" onclick="clica(this.id, 54);"></td>
+			<td class="celula" id="c55" onclick="clica(this.id, 55);"></td>
+			<td class="celula" id="c56" onclick="clica(this.id, 56);"></td>
+			<td class="celula" id="c57" onclick="clica(this.id, 57);"></td>
+			<td class="celula" id="c58" onclick="clica(this.id, 58);"></td>
+			<td class="celula" id="c59" onclick="clica(this.id, 59);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c60" onclick="clica(this.id, 60);"></td>
+			<td class="celula" id="c61" onclick="clica(this.id, 61);"></td>
+			<td class="celula" id="c62" onclick="clica(this.id, 62);"></td>
+			<td class="celula" id="c63" onclick="clica(this.id, 63);"></td>
+			<td class="celula" id="c64" onclick="clica(this.id, 64);"></td>
+			<td class="celula" id="c65" onclick="clica(this.id, 65);"></td>
+			<td class="celula" id="c66" onclick="clica(this.id, 66);"></td>
+			<td class="celula" id="c67" onclick="clica(this.id, 67);"></td>
+			<td class="celula" id="c68" onclick="clica(this.id, 68);"></td>
+			<td class="celula" id="c69" onclick="clica(this.id, 69);"></td>
+			<td class="celula" id="c70" onclick="clica(this.id, 70);"></td>
+			<td class="celula" id="c71" onclick="clica(this.id, 71);"></td>
+			<td class="celula" id="c72" onclick="clica(this.id, 72);"></td>
+			<td class="celula" id="c73" onclick="clica(this.id, 73);"></td>
+			<td class="celula" id="c74" onclick="clica(this.id, 74);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c75" onclick="clica(this.id, 75);"></td>
+			<td class="celula" id="c76" onclick="clica(this.id, 76);"></td>
+			<td class="celula" id="c77" onclick="clica(this.id, 77);"></td>
+			<td class="celula" id="c78" onclick="clica(this.id, 78);"></td>
+			<td class="celula" id="c79" onclick="clica(this.id, 79);"></td>
+			<td class="celula" id="c80" onclick="clica(this.id, 80);"></td>
+			<td class="celula" id="c81" onclick="clica(this.id, 81);"></td>
+			<td class="celula" id="c82" onclick="clica(this.id, 82);"></td>
+			<td class="celula" id="c83" onclick="clica(this.id, 83);"></td>
+			<td class="celula" id="c84" onclick="clica(this.id, 84);"></td>
+			<td class="celula" id="c85" onclick="clica(this.id, 85);"></td>
+			<td class="celula" id="c86" onclick="clica(this.id, 86);"></td>
+			<td class="celula" id="c87" onclick="clica(this.id, 87);"></td>
+			<td class="celula" id="c88" onclick="clica(this.id, 88);"></td>
+			<td class="celula" id="c89" onclick="clica(this.id, 89);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c90" onclick="clica(this.id, 90);"></td>
+			<td class="celula" id="c91" onclick="clica(this.id, 91);"></td>
+			<td class="celula" id="c92" onclick="clica(this.id, 92);"></td>
+			<td class="celula" id="c93" onclick="clica(this.id, 93);"></td>
+			<td class="celula" id="c94" onclick="clica(this.id, 94);"></td>
+			<td class="celula" id="c95" onclick="clica(this.id, 95);"></td>
+			<td class="celula" id="c96" onclick="clica(this.id, 96);"></td>
+			<td class="celula" id="c97" onclick="clica(this.id, 97);"></td>
+			<td class="celula" id="c98" onclick="clica(this.id, 98);"></td>
+			<td class="celula" id="c99" onclick="clica(this.id, 99);"></td>
+			<td class="celula" id="c100" onclick="clica(this.id, 100);"></td>
+			<td class="celula" id="c101" onclick="clica(this.id, 101);"></td>
+			<td class="celula" id="c102" onclick="clica(this.id, 102);"></td>
+			<td class="celula" id="c103" onclick="clica(this.id, 103);"></td>
+			<td class="celula" id="c104" onclick="clica(this.id, 104);"></td>
+		</tr>
+		<tr>
+			<td class="celula" id="c105" onclick="clica(this.id, 105);"></td>
+			<td class="celula" id="c106" onclick="clica(this.id, 106);"></td>
+			<td class="celula" id="c107" onclick="clica(this.id, 107);"></td>
+			<td class="celula" id="c108" onclick="clica(this.id, 108);"></td>
+			<td class="celula" id="c109" onclick="clica(this.id, 109);"></td>
+			<td class="celula" id="c110" onclick="clica(this.id, 110);"></td>
+			<td class="celula" id="c111" onclick="clica(this.id, 111);"></td>
+			<td class="celula" id="c112" onclick="clica(this.id, 112);"></td>
+			<td class="celula" id="c113" onclick="clica(this.id, 113);"></td>
+			<td class="celula" id="c114" onclick="clica(this.id, 114);"></td>
+			<td class="celula" id="c115" onclick="clica(this.id, 115);"></td>
+			<td class="celula" id="c116" onclick="clica(this.id, 116);"></td>
+			<td class="celula" id="c117" onclick="clica(this.id, 117);"></td>
+			<td class="celula" id="c118" onclick="clica(this.id, 118);"></td>
+			<td class="celula" id="c119" onclick="clica(this.id, 119);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c120" onclick="clica(this.id, 120);"></td>
+			<td class="celula" id="c121" onclick="clica(this.id, 121);"></td>
+			<td class="celula" id="c122" onclick="clica(this.id, 122);"></td>
+			<td class="celula" id="c123" onclick="clica(this.id, 123);"></td>
+			<td class="celula" id="c124" onclick="clica(this.id, 124);"></td>
+			<td class="celula" id="c125" onclick="clica(this.id, 125);"></td>
+			<td class="celula" id="c126" onclick="clica(this.id, 126);"></td>
+			<td class="celula" id="c127" onclick="clica(this.id, 127);"></td>
+			<td class="celula" id="c128" onclick="clica(this.id, 128);"></td>
+			<td class="celula" id="c129" onclick="clica(this.id, 129);"></td>
+			<td class="celula" id="c130" onclick="clica(this.id, 130);"></td>
+			<td class="celula" id="c131" onclick="clica(this.id, 131);"></td>
+			<td class="celula" id="c132" onclick="clica(this.id, 132);"></td>
+			<td class="celula" id="c133" onclick="clica(this.id, 133);"></td>
+			<td class="celula" id="c134" onclick="clica(this.id, 134);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c135" onclick="clica(this.id, 135);"></td>
+			<td class="celula" id="c136" onclick="clica(this.id, 136);"></td>
+			<td class="celula" id="c137" onclick="clica(this.id, 137);"></td>
+			<td class="celula" id="c138" onclick="clica(this.id, 138);"></td>
+			<td class="celula" id="c139" onclick="clica(this.id, 139);"></td>
+			<td class="celula" id="c140" onclick="clica(this.id, 140);"></td>
+			<td class="celula" id="c141" onclick="clica(this.id, 141);"></td>
+			<td class="celula" id="c142" onclick="clica(this.id, 142);"></td>
+			<td class="celula" id="c143" onclick="clica(this.id, 143);"></td>
+			<td class="celula" id="c144" onclick="clica(this.id, 144);"></td>
+			<td class="celula" id="c145" onclick="clica(this.id, 145);"></td>
+			<td class="celula" id="c146" onclick="clica(this.id, 146);"></td>
+			<td class="celula" id="c147" onclick="clica(this.id, 147);"></td>
+			<td class="celula" id="c148" onclick="clica(this.id, 148);"></td>
+			<td class="celula" id="c149" onclick="clica(this.id, 149);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c150" onclick="clica(this.id, 150);"></td>
+			<td class="celula" id="c151" onclick="clica(this.id, 151);"></td>
+			<td class="celula" id="c152" onclick="clica(this.id, 152);"></td>
+			<td class="celula" id="c153" onclick="clica(this.id, 153);"></td>
+			<td class="celula" id="c154" onclick="clica(this.id, 154);"></td>
+			<td class="celula" id="c155" onclick="clica(this.id, 155);"></td>
+			<td class="celula" id="c156" onclick="clica(this.id, 156);"></td>
+			<td class="celula" id="c157" onclick="clica(this.id, 157);"></td>
+			<td class="celula" id="c158" onclick="clica(this.id, 158);"></td>
+			<td class="celula" id="c159" onclick="clica(this.id, 159);"></td>
+			<td class="celula" id="c160" onclick="clica(this.id, 160);"></td>
+			<td class="celula" id="c161" onclick="clica(this.id, 161);"></td>
+			<td class="celula" id="c162" onclick="clica(this.id, 162);"></td>
+			<td class="celula" id="c163" onclick="clica(this.id, 163);"></td>
+			<td class="celula" id="c164" onclick="clica(this.id, 164);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c165" onclick="clica(this.id, 165);"></td>
+			<td class="celula" id="c166" onclick="clica(this.id, 166);"></td>
+			<td class="celula" id="c167" onclick="clica(this.id, 167);"></td>
+			<td class="celula" id="c168" onclick="clica(this.id, 168);"></td>
+			<td class="celula" id="c169" onclick="clica(this.id, 169);"></td>
+			<td class="celula" id="c170" onclick="clica(this.id, 170);"></td>
+			<td class="celula" id="c171" onclick="clica(this.id, 171);"></td>
+			<td class="celula" id="c172" onclick="clica(this.id, 172);"></td>
+			<td class="celula" id="c173" onclick="clica(this.id, 173);"></td>
+			<td class="celula" id="c174" onclick="clica(this.id, 174);"></td>
+			<td class="celula" id="c175" onclick="clica(this.id, 175);"></td>
+			<td class="celula" id="c176" onclick="clica(this.id, 176);"></td>
+			<td class="celula" id="c177" onclick="clica(this.id, 177);"></td>
+			<td class="celula" id="c178" onclick="clica(this.id, 178);"></td>
+			<td class="celula" id="c179" onclick="clica(this.id, 179);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c180" onclick="clica(this.id, 180);"></td>
+			<td class="celula" id="c181" onclick="clica(this.id, 181);"></td>
+			<td class="celula" id="c182" onclick="clica(this.id, 182);"></td>
+			<td class="celula" id="c183" onclick="clica(this.id, 183);"></td>
+			<td class="celula" id="c184" onclick="clica(this.id, 184);"></td>
+			<td class="celula" id="c185" onclick="clica(this.id, 185);"></td>
+			<td class="celula" id="c186" onclick="clica(this.id, 186);"></td>
+			<td class="celula" id="c187" onclick="clica(this.id, 187);"></td>
+			<td class="celula" id="c188" onclick="clica(this.id, 188);"></td>
+			<td class="celula" id="c189" onclick="clica(this.id, 189);"></td>
+			<td class="celula" id="c190" onclick="clica(this.id, 190);"></td>
+			<td class="celula" id="c191" onclick="clica(this.id, 191);"></td>
+			<td class="celula" id="c192" onclick="clica(this.id, 192);"></td>
+			<td class="celula" id="c193" onclick="clica(this.id, 193);"></td>
+			<td class="celula" id="c194" onclick="clica(this.id, 194);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c195" onclick="clica(this.id, 195);"></td>
+			<td class="celula" id="c196" onclick="clica(this.id, 196);"></td>
+			<td class="celula" id="c197" onclick="clica(this.id, 197);"></td>
+			<td class="celula" id="c198" onclick="clica(this.id, 198);"></td>
+			<td class="celula" id="c199" onclick="clica(this.id, 199);"></td>
+			<td class="celula" id="c200" onclick="clica(this.id, 200);"></td>
+			<td class="celula" id="c201" onclick="clica(this.id, 201);"></td>
+			<td class="celula" id="c202" onclick="clica(this.id, 202);"></td>
+			<td class="celula" id="c203" onclick="clica(this.id, 203);"></td>
+			<td class="celula" id="c204" onclick="clica(this.id, 204);"></td>
+			<td class="celula" id="c205" onclick="clica(this.id, 205);"></td>
+			<td class="celula" id="c206" onclick="clica(this.id, 206);"></td>
+			<td class="celula" id="c207" onclick="clica(this.id, 207);"></td>
+			<td class="celula" id="c208" onclick="clica(this.id, 208);"></td>
+			<td class="celula" id="c209" onclick="clica(this.id, 209);"></td>
+		</tr>
+		<tr>
+			
+			<td class="celula" id="c210" onclick="clica(this.id, 210);"></td>
+			<td class="celula" id="c211" onclick="clica(this.id, 211);"></td>
+			<td class="celula" id="c212" onclick="clica(this.id, 212);"></td>
+			<td class="celula" id="c213" onclick="clica(this.id, 213);"></td>
+			<td class="celula" id="c214" onclick="clica(this.id, 214);"></td>
+			<td class="celula" id="c215" onclick="clica(this.id, 215);"></td>
+			<td class="celula" id="c216" onclick="clica(this.id, 216);"></td>
+			<td class="celula" id="c217" onclick="clica(this.id, 217);"></td>
+			<td class="celula" id="c218" onclick="clica(this.id, 218);"></td>
+			<td class="celula" id="c219" onclick="clica(this.id, 219);"></td>
+			<td class="celula" id="c220" onclick="clica(this.id, 220);"></td>
+			<td class="celula" id="c221" onclick="clica(this.id, 221);"></td>
+			<td class="celula" id="c222" onclick="clica(this.id, 222);"></td>
+			<td class="celula" id="c223" onclick="clica(this.id, 223);"></td>
+			<td class="celula" id="c224" onclick="clica(this.id, 224);"></td>
+		</tr>
+	</table>
+	<input class="botaoReset" type="button" value="Limpar tabuleiro" onclick="window.location.reload();" /><br>
+	<fieldset class="fildset">
+		<legend>Jogadas</legend>
+		<h3 id="ultimoJogador"></h3>
+	</fieldset>
+</body>
+</html>
